@@ -95,6 +95,12 @@ section { padding-block: 48px; border-bottom: 1px solid var(--gray-2); }
 .jobs .what { grid-column: 1 / -1; color: var(--text-2); font-size: 0.9375rem; }
 @media (max-width: 30rem) { .jobs li { grid-template-columns: 1fr; } .jobs .when { text-align: left; } }
 
+.toolset { display: grid; gap: 0; margin: 0; }
+.toolset > div { display: grid; grid-template-columns: 11rem 1fr; gap: 10px 20px; padding-block: 16px; border-top: 1px solid var(--gray-2); }
+.toolset > div:first-child { border-top: 0; padding-top: 0; }
+.toolset dt { font: 600 0.9375rem/1.4 var(--body); padding-top: 6px; }
+.toolset dd { margin: 0; min-width: 0; }
+@media (max-width: 36rem) { .toolset > div { grid-template-columns: 1fr; } .toolset dt { padding-top: 0; } }
 .skills { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
 .skills li { font: 400 0.8125rem/1 var(--mono); padding: 9px 11px; border-radius: 4px; background: var(--gray-1); border: 1px solid var(--gray-2); color: var(--text-2); }
 
@@ -201,9 +207,28 @@ footer { padding-block: 24px 40px; font: 400 0.8125rem/1.5 var(--mono); color: v
     <div class="sec-head">
       <h2 id="h-skills"><span data-l="es">Herramientas</span><span data-l="en">Tools</span></h2>
     </div>
-    <ul class="skills">
-      <li>SQL</li><li>Power BI</li><li>Excel · VBA · Power Query</li><li>SAP (BOM, MRP)</li><li>Lean Six Sigma</li><li><span data-l="es">Clasificación ABC</span><span data-l="en">ABC classification</span></li><li>Git · GitHub</li>
-    </ul>
+    <dl class="toolset">
+      <div>
+        <dt><span data-l="es">Análisis de datos</span><span data-l="en">Data analysis</span></dt>
+        <dd><ul class="skills"><li><span data-l="es">SQL (JOIN, CTE, funciones de ventana)</span><span data-l="en">SQL (JOIN, CTE, window functions)</span></li><li>Python (pandas, matplotlib)</li><li><span data-l="es">Excel avanzado (tablas dinámicas)</span><span data-l="en">Advanced Excel (pivot tables)</span></li><li>Google Sheets</li><li>Power Query</li></ul></dd>
+      </div>
+      <div>
+        <dt><span data-l="es">Visualización y BI</span><span data-l="en">Visualization and BI</span></dt>
+        <dd><ul class="skills"><li><span data-l="es">Power BI (DAX básico)</span><span data-l="en">Power BI (basic DAX)</span></li><li>Tableau</li><li>Looker Studio</li></ul></dd>
+      </div>
+      <div>
+        <dt><span data-l="es">Automatización</span><span data-l="en">Automation</span></dt>
+        <dd><ul class="skills"><li><span data-l="es">VBA (macros de Excel)</span><span data-l="en">VBA (Excel macros)</span></li><li>Git · GitHub</li></ul></dd>
+      </div>
+      <div>
+        <dt><span data-l="es">Estadística y mejora</span><span data-l="en">Statistics and improvement</span></dt>
+        <dd><ul class="skills"><li>Minitab</li><li><span data-l="es">Control estadístico (SPC)</span><span data-l="en">Statistical process control</span></li><li><span data-l="es">Pronósticos</span><span data-l="en">Forecasting</span></li><li>Lean Six Sigma Green Belt</li></ul></dd>
+      </div>
+      <div>
+        <dt><span data-l="es">Operaciones</span><span data-l="en">Operations</span></dt>
+        <dd><ul class="skills"><li>SAP (BOM, MRP)</li><li><span data-l="es">Clasificación ABC</span><span data-l="en">ABC classification</span></li><li>EOQ</li><li>5S</li></ul></dd>
+      </div>
+    </dl>
   </section>
 
   <section aria-labelledby="h-contact" style="border-bottom:0">
