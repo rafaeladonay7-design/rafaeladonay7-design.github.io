@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Adonay Rocha Portfolio</title>
+<meta name="description" content="Portafolio de Rafael Adonay Rocha Gutiérrez: análisis de cadena de suministro y operaciones con SQL.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; the featured case study is laid out like a shipping waybill (mono fields, stripe), charts below it. */
+:root {
+  --bg: #f1f3f6;
+  --surface: #ffffff;
+  --ink: #121a2b;
+  --ink-2: #4a5468;
+  --muted: #6b7489;
+  --line: #dce1e8;
+  --accent: #1f5fd1;
+  --signal: #c77700;
+  --bar: #c3ccda;
+  --display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.6rem;
+  --step-3: clamp(2.1rem, 5.5vw, 3.6rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f141c; --surface: #161d28; --ink: #eef1f6; --ink-2: #b3bccb; --muted: #8b95a8;
+    --line: #2a3342; --accent: #6b98f2; --signal: #e09a2c; --bar: #3a4558; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f141c; --surface: #161d28; --ink: #eef1f6; --ink-2: #b3bccb; --muted: #8b95a8;
+  --line: #2a3342; --accent: #6b98f2; --signal: #e09a2c; --bar: #3a4558; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 400 var(--step-0)/1.6 var(--body);
+}
+[data-lang="es"] [data-l="en"], [data-lang="en"] [data-l="es"] { display: none !important; }
+[hidden] { display: none !important; }
+
+.wrap { max-width: 60rem; margin: 0 auto; padding-inline: 16px; }
+@media (min-width: 40rem) { .wrap { padding-inline: 32px; } }
+
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.1; }
+p { margin: 0; }
+.eyebrow {
+  font: 500 var(--step--1)/1.3 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
+}
+
+/* Top bar */
+.top { border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.brand { font: 700 1rem/1 var(--display); font-stretch: 112%; letter-spacing: 0.01em; }
+.lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 2px; background: var(--surface); }
+.lang button {
+  font: 500 var(--step--1)/1 var(--mono); letter-spacing: 0.06em; border: 0; background: transparent; color: var(--ink-2);
+  padding: 7px 12px; border-radius: 999px; cursor: pointer;
+}
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+
+/* Hero */
+.hero { padding-block: 56px 40px; display: grid; gap: 20px; }
+.hero h1 { font-size: var(--step-3); font-weight: 800; font-stretch: 118%; letter-spacing: -0.01em; max-width: 18ch; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lede { font-size: var(--step-1); color: var(--ink-2); max-width: 40rem; line-height: 1.5; }
+.hero .meta { display: flex; flex-wrap: wrap; gap: 8px 20px; font: 400 var(--step--1)/1.4 var(--mono); color: var(--muted); }
+
+section { padding-block: 40px; border-top: 1px solid var(--line); }
+.sec-head { display: grid; gap: 8px; margin-bottom: 28px; }
+.sec-head h2 { font-size: var(--step-2); font-weight: 750; font-stretch: 110%; }
+
+/* Waybill */
+.waybill {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+  display: grid; grid-template-columns: 10px 1fr;
+}
+.waybill .stripe {
+  background: repeating-linear-gradient(-45deg, var(--signal) 0 8px, transparent 8px 16px);
+  opacity: 0.85;
+}
+.wb-body { min-width: 0; padding: 24px; display: grid; gap: 24px; }
+@media (min-width: 40rem) { .wb-body { padding: 32px; } }
+.wb-title { display: grid; gap: 10px; }
+.wb-title h3 { font-size: var(--step-2); font-weight: 750; font-stretch: 106%; }
+.wb-title p { color: var(--ink-2); max-width: 44rem; }
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); border: 1px solid var(--line); border-radius: 4px; }
+.field { padding: 10px 14px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 -1px -1px 0; display: grid; gap: 2px; }
+.field dt { font: 500 0.6875rem/1.3 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.field dd { margin: 0; font: 500 var(--step-0)/1.35 var(--mono); font-variant-numeric: tabular-nums; }
+
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 16px; }
+.kpi { display: grid; gap: 4px; align-content: start; }
+.kpi .n { font: 800 2rem/1 var(--display); font-stretch: 100%; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.kpi .n small { font-size: 0.5em; font-weight: 600; color: var(--muted); }
+.kpi p { color: var(--ink-2); font-size: var(--step--1); line-height: 1.45; max-width: 26ch; }
+
+/* Charts */
+.charts { display: grid; gap: 28px; }
+@media (min-width: 52rem) { .charts { grid-template-columns: 1.25fr 1fr; } }
+figure { margin: 0; min-width: 0; display: grid; gap: 10px; align-content: start; }
+figcaption { display: grid; gap: 2px; }
+figcaption strong { font: 700 var(--step-0)/1.3 var(--display); font-stretch: 104%; }
+figcaption span { font-size: var(--step--1); color: var(--muted); }
+.chart { position: relative; width: 100%; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart text { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
+.chart .lab { fill: var(--ink); font-weight: 500; }
+.chart .grid { stroke: var(--line); stroke-width: 1; }
+.chart .ref { stroke: var(--ink-2); stroke-width: 1; }
+.tip {
+  position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); font: 500 12px/1.4 var(--mono);
+  padding: 6px 9px; border-radius: 4px; white-space: nowrap; transform: translate(-50%, calc(-100% - 10px));
+}
+.sr-table { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.recs { display: grid; gap: 14px; padding: 0; margin: 0; list-style: none; counter-reset: r; }
+.recs li { display: grid; grid-template-columns: 2rem 1fr; gap: 4px 10px; counter-increment: r; }
+.recs li::before { content: counter(r, decimal-leading-zero); font: 500 var(--step--1)/1.6 var(--mono); color: var(--muted); }
+.recs li > div { min-width: 0; }
+.recs b { font-weight: 600; }
+.recs-h { font: 700 var(--step-1)/1.2 var(--display); font-stretch: 106%; }
+
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font: 500 var(--step--1)/1 var(--mono);
+  letter-spacing: 0.04em; padding: 11px 14px; border-radius: 4px; border: 1px solid var(--line); color: var(--ink); background: var(--bg);
+}
+.btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn:hover { border-color: var(--ink-2); }
+
+/* Secondary project */
+.project { display: grid; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 24px; }
+@media (min-width: 40rem) { .project { padding: 32px; } }
+.project h3 { font-size: var(--step-1); font-weight: 750; font-stretch: 106%; }
+.project p { color: var(--ink-2); max-width: 44rem; }
+.project .stat { font: 500 var(--step--1)/1.5 var(--mono); color: var(--ink); border-left: 2px solid var(--signal); padding-left: 12px; }
+
+/* Skills */
+.skills { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+.skills h3 { font-size: var(--step-0); font-weight: 700; font-stretch: 104%; margin-bottom: 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
+.chips li { font: 400 var(--step--1)/1 var(--mono); padding: 7px 9px; border: 1px solid var(--line); border-radius: 3px; background: var(--surface); }
+
+.contact { display: grid; gap: 16px; }
+.contact p { color: var(--ink-2); max-width: 40rem; }
+footer { padding-block: 28px 40px; border-top: 1px solid var(--line); font: 400 var(--step--1)/1.5 var(--mono); color: var(--muted); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .chart path.line { transition: stroke-width .15s; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="brand">Adonay Rocha</span>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" id="btn-es" data-set="es" aria-pressed="true">ES</button>
+      <button type="button" id="btn-en" data-set="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <p class="eyebrow"><span data-l="es">Cadena de suministro · Operaciones · SQL</span><span data-l="en">Supply chain · Operations · SQL</span></p>
+    <h1>
+      <span data-l="es">Encuentro dónde falla una cadena de suministro y <em>qué atender primero.</em></span>
+      <span data-l="en">I find where a supply chain breaks down and <em>what to fix first.</em></span>
+    </h1>
+    <p class="lede">
+      <span data-l="es">Soy Rafael Adonay Rocha Gutiérrez, estudiante de Ingeniería Industrial en la Universidad Autónoma de Guadalajara, con experiencia en planeación de la producción (Jabil) y mejora continua (GPV). Uso SQL e investigación de operaciones para convertir datos de pedidos, entregas e inventario en decisiones concretas.</span>
+      <span data-l="en">I'm Rafael Adonay Rocha Gutiérrez, an Industrial Engineering student at Universidad Autónoma de Guadalajara with experience in production planning (Jabil) and continuous improvement (GPV). I use SQL and operations research to turn order, delivery and inventory data into concrete decisions.</span>
+    </p>
+    <div class="meta">
+      <span>Guadalajara, MX</span>
+      <span data-l="es">Español · Inglés B2</span><span data-l="en">Spanish · English B2</span>
+    </div>
+  </div>
+
+  <section id="proyectos" aria-labelledby="h-proj">
+    <div class="sec-head">
+      <p class="eyebrow"><span data-l="es">Proyecto destacado</span><span data-l="en">Featured project</span></p>
+      <h2 id="h-proj"><span data-l="es">Diagnóstico logístico de un marketplace</span><span data-l="en">Marketplace logistics diagnostic</span></h2>
+    </div>
+
+    <article class="waybill">
+      <div class="stripe" aria-hidden="true"></div>
+      <div class="wb-body">
+        <div class="wb-title">
+          <h3><span data-l="es">¿Dónde fallan las entregas de Olist y cuánto le cuesta en satisfacción?</span><span data-l="en">Where do Olist deliveries fail, and what does it cost in satisfaction?</span></h3>
+          <p>
+            <span data-l="es">Datos reales y públicos del marketplace brasileño Olist. Rol simulado: analista de supply chain. La Dirección de Operaciones pidió un diagnóstico de puntualidad por región, vendedor y temporada. Lo respondí con 11 consultas SQL sobre 8 tablas relacionadas.</span>
+            <span data-l="en">Real public data from Olist, a Brazilian marketplace. Simulated role: supply chain analyst. The Director of Operations asked for an on-time delivery diagnostic by region, seller and season. I answered it with 11 SQL queries across 8 related tables.</span>
+          </p>
+        </div>
+
+        <dl class="fields">
+          <div class="field"><dt><span data-l="es">Dataset</span><span data-l="en">Dataset</span></dt><dd>Olist · Kaggle</dd></div>
+          <div class="field"><dt><span data-l="es">Pedidos</span><span data-l="en">Orders</span></dt><dd>99,441</dd></div>
+          <div class="field"><dt><span data-l="es">Periodo</span><span data-l="en">Period</span></dt><dd>2016–2018</dd></div>
+          <div class="field"><dt><span data-l="es">Tablas</span><span data-l="en">Tables</span></dt><dd>8</dd></div>
+          <div class="field"><dt><span data-l="es">Herramienta</span><span data-l="en">Tool</span></dt><dd>SQLite</dd></div>
+        </dl>
+
+        <div class="kpis">
+          <div class="kpi">
+            <div class="n">12.6 <small data-l="es">días</small><small data-l="en">days</small></div>
+            <p><span data-l="es">tiempo promedio de entrega, de la compra a la puerta del cliente</span><span data-l="en">average lead time from purchase to the customer's door</span></p>
+          </div>
+          <div class="kpi">
+            <div class="n">8.1%</div>
+            <p><span data-l="es">de 96,470 pedidos entregados llegó después de la fecha prometida</span><span data-l="en">of 96,470 delivered orders arrived after the promised date</span></p>
+          </div>
+          <div class="kpi">
+            <div class="n">4.29 → 2.57</div>
+            <p><span data-l="es">calificación promedio a tiempo vs tarde: 40% menor cuando hay retraso</span><span data-l="en">average rating on time vs late: 40% lower when the order is late</span></p>
+          </div>
+        </div>
+
+        <div class="charts">
+          <figure>
+            <figcaption>
+              <strong><span data-l="es">% de entregas tarde por mes de compra</span><span data-l="en">% late deliveries by purchase month</span></strong>
+              <span><span data-l="es">Ene 2017 – ago 2018. La línea gris marca el promedio general (8.1%).</span><span data-l="en">Jan 2017 – Aug 2018. The gray line marks the overall average (8.1%).</span></span>
+            </figcaption>
+            <div class="chart" id="chart-month"></div>
+          </figure>
+          <figure>
+            <figcaption>
+              <strong><span data-l="es">% de entregas tarde por estado</span><span data-l="en">% late deliveries by state</span></strong>
+              <span><span data-l="es">Estados con 500+ pedidos. Resaltado: Río de Janeiro, el 2.º mercado.</span><span data-l="en">States with 500+ orders. Highlighted: Rio de Janeiro, the 2nd largest market.</span></span>
+            </figcaption>
+            <div class="chart" id="chart-state"></div>
+          </figure>
+        </div>
+
+        <div>
+          <p class="recs-h" style="margin-bottom:14px"><span data-l="es">Recomendaciones</span><span data-l="en">Recommendations</span></p>
+          <ol class="recs">
+            <li><div><b data-l="es">Priorizar Río de Janeiro.</b><b data-l="en">Prioritize Rio de Janeiro.</b> <span data-l="es">Es el segundo mercado (12,350 pedidos) y su tasa de retraso, 13.5%, es 1.7 veces el promedio. Evaluar un centro de distribución local o un socio logístico.</span><span data-l="en">It is the second largest market (12,350 orders) and its 13.5% late rate is 1.7 times the average. Evaluate a local distribution center or logistics partner.</span></div></li>
+            <li><div><b data-l="es">Scorecard de vendedores.</b><b data-l="en">Seller scorecard.</b> <span data-l="es">Los 10 peores vendedores (mín. 50 pedidos) llegan tarde en más del 21% de sus pedidos. Atender primero a los de alto volumen.</span><span data-l="en">The 10 worst sellers (min. 50 orders) are late on more than 21% of their orders. Address high-volume sellers first.</span></div></li>
+            <li><div><b data-l="es">Planear capacidad para picos.</b><b data-l="en">Plan capacity for peaks.</b> <span data-l="es">Black Friday 2017 subió las ventas 52% y los retrasos a 14.3%. Febrero y marzo de 2018 fueron peores: 16.0% y 21.4%.</span><span data-l="en">Black Friday 2017 lifted sales 52% and late deliveries to 14.3%. February and March 2018 were worse: 16.0% and 21.4%.</span></div></li>
+            <li><div><b data-l="es">Inventario clase A.</b><b data-l="en">Class A inventory.</b> <span data-l="es">Blancos, salud y belleza, y relojes y regalos lideran ventas en SP, RJ y MG. Asegurar su disponibilidad.</span><span data-l="en">Bed &amp; bath, health &amp; beauty, and watches &amp; gifts lead sales in SP, RJ and MG. Secure their availability.</span></div></li>
+          </ol>
+        </div>
+
+        <div class="links">
+          <a class="btn primary" id="repo-link" href="https://github.com/rafaeladonay7-design/olist-sql" target="_blank" rel="noopener"><span data-l="es">Ver consultas en GitHub</span><span data-l="en">View queries on GitHub</span> ↗</a>
+          <a class="btn" href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce" target="_blank" rel="noopener"><span data-l="es">Dataset en Kaggle</span><span data-l="en">Dataset on Kaggle</span> ↗</a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section aria-labelledby="h-more">
+    <div class="sec-head">
+      <p class="eyebrow"><span data-l="es">Más proyectos SQL</span><span data-l="en">More SQL projects</span></p>
+      <h2 id="h-more"><span data-l="es">Desempeño de envíos y rentabilidad</span><span data-l="en">Shipping performance and profitability</span></h2>
+    </div>
+    <article class="project">
+      <p class="eyebrow">DataCo Global · 180,519 <span data-l="es">líneas de pedido</span><span data-l="en">order lines</span> · SQLite</p>
+      <h3><span data-l="es">¿Por qué llega tarde más de la mitad de los pedidos?</span><span data-l="en">Why do more than half of the orders arrive late?</span></h3>
+      <p>
+        <span data-l="es">El 54.8% de los pedidos llega tarde y el retraso es casi igual en todas las regiones (53% a 59%). La causa está en la promesa de entrega: First Class promete 1 día y siempre tarda 2, así que el 100% de sus pedidos llega tarde. Second Class promete 2 días y tarda 4. También limpié fechas con una vista SQL, clasifiqué los productos con ABC y medí cómo los descuentos reducen el margen.</span>
+        <span data-l="en">54.8% of orders arrive late, and the late rate is almost the same in every region (53% to 59%). The cause is the delivery promise: First Class promises 1 day and always takes 2, so 100% of its orders are late. Second Class promises 2 days and takes 4. I also cleaned dates with a SQL view, ran an ABC classification of products and measured how discounts reduce margin.</span>
+      </p>
+      <p class="stat"><span data-l="es">ABC: 8 productos (6.8%) generan el 84.7% de las ventas · Margen: 13.1% sin descuento vs 8.7% con 20%</span><span data-l="en">ABC: 8 products (6.8%) generate 84.7% of sales · Margin: 13.1% with no discount vs 8.7% at 20%</span></p>
+      <div class="links">
+        <a class="btn primary" href="https://github.com/rafaeladonay7-design/dataco-sql" target="_blank" rel="noopener"><span data-l="es">Ver consultas en GitHub</span><span data-l="en">View queries on GitHub</span> ↗</a>
+        <a class="btn" href="https://www.kaggle.com/datasets/shashwatwork/dataco-smart-supply-chain-for-big-data-analysis" target="_blank" rel="noopener"><span data-l="es">Dataset en Kaggle</span><span data-l="en">Dataset on Kaggle</span> ↗</a>
+      </div>
+    </article>
+  </section>
+
+  <section aria-labelledby="h-acad">
+    <div class="sec-head">
+      <p class="eyebrow"><span data-l="es">Trabajo académico</span><span data-l="en">Academic work</span></p>
+      <h2 id="h-acad"><span data-l="es">Investigación de operaciones</span><span data-l="en">Operations research</span></h2>
+    </div>
+    <article class="project">
+      <p class="eyebrow">UAG · <span data-l="es">Septiembre 2026 · Equipo de 2</span><span data-l="en">September 2026 · Team of 2</span></p>
+      <h3><span data-l="es">Optimización de cadenas de suministro globales: caso Amazon</span><span data-l="en">Optimizing global supply chains: the Amazon case</span></h3>
+      <p>
+        <span data-l="es">Reporte sobre cómo la investigación de operaciones coordina proveedores, inventarios, instalaciones y transporte. Analicé la regionalización de la red de Amazon en EE. UU. (2023) y propuse un modelo de optimización por escenarios para decidir cuánto inventario de respaldo reservar en cada región y cuánto transferir ante una falla, validado con simulación.</span>
+        <span data-l="en">A report on how operations research coordinates suppliers, inventory, facilities and transportation. I analyzed the regionalization of Amazon's US network (2023) and proposed a scenario-based optimization model to decide how much backup inventory to hold in each region and how much to transfer when a node fails, tested through simulation.</span>
+      </p>
+      <p class="stat"><span data-l="es">Dato del caso: pedidos atendidos desde la propia región, de 62% a 76% (O'Neill, 2023)</span><span data-l="en">Case figure: orders fulfilled within their own region rose from 62% to 76% (O'Neill, 2023)</span></p>
+    </article>
+  </section>
+
+  <section aria-labelledby="h-skills">
+    <div class="sec-head">
+      <p class="eyebrow"><span data-l="es">Habilidades</span><span data-l="en">Skills</span></p>
+      <h2 id="h-skills"><span data-l="es">Con qué trabajo</span><span data-l="en">What I work with</span></h2>
+    </div>
+    <div class="skills">
+      <div>
+        <h3>SQL</h3>
+        <ul class="chips">
+          <li>JOIN / LEFT JOIN</li><li>GROUP BY · HAVING</li><li>CASE WHEN</li><li>CTE (WITH)</li><li>LAG()</li><li>RANK() OVER</li><li>SUM() OVER</li><li>CREATE VIEW</li><li><span data-l="es">Funciones de fecha</span><span data-l="en">Date functions</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3><span data-l="es">Operaciones</span><span data-l="en">Operations</span></h3>
+        <ul class="chips">
+          <li><span data-l="es">Punto de reorden</span><span data-l="en">Reorder point</span></li><li><span data-l="es">Inventario de seguridad</span><span data-l="en">Safety stock</span></li><li><span data-l="es">Clasificación ABC</span><span data-l="en">ABC classification</span></li><li><span data-l="es">Localización de instalaciones</span><span data-l="en">Facility location</span></li><li>Lead time</li><li><span data-l="es">Nivel de servicio</span><span data-l="en">Service level</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3><span data-l="es">Herramientas</span><span data-l="en">Tools</span></h3>
+        <ul class="chips">
+          <li>SQLite</li><li>DB Browser for SQLite</li><li>Power BI</li><li>Excel · VBA · Power Query</li><li>SAP (BOM, MRP)</li><li>Git · GitHub</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" aria-labelledby="h-contact">
+    <div class="contact">
+      <p class="eyebrow"><span data-l="es">Contacto</span><span data-l="en">Contact</span></p>
+      <h2 id="h-contact" style="font-size:var(--step-2);font-weight:750;font-stretch:110%"><span data-l="es">Todo el código está en GitHub</span><span data-l="en">All the code is on GitHub</span></h2>
+      <div class="links">
+        <a class="btn primary" id="gh-link" href="https://github.com/rafaeladonay7-design" target="_blank" rel="noopener">github.com/rafaeladonay7-design ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Rafael Adonay Rocha Gutiérrez · 2026</div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+
+  var months = ["2017-01","2017-02","2017-03","2017-04","2017-05","2017-06","2017-07","2017-08","2017-09","2017-10","2017-11","2017-12","2018-01","2018-02","2018-03","2018-04","2018-05","2018-06","2018-07","2018-08"];
+  var late = [3.1,3.2,5.6,7.9,3.6,3.9,3.4,3.3,5.2,5.3,14.3,8.4,6.6,16.0,21.4,5.3,8.2,1.4,4.5,10.4];
+  var orders = [750,1653,2546,2303,3545,3135,3872,4193,4150,4478,7288,5513,7069,6555,7003,6798,6749,6096,6156,6351];
+  var states = [["MA",717,19.7],["CE",1279,15.3],["BA",3256,14.0],["RJ",12350,13.5],["PA",946,12.4],["ES",1995,12.2],["MS",701,11.6],["PB",517,11.0],["PE",1593,10.8],["SC",3546,9.8],["GO",1957,8.2],["RS",5344,7.1],["DF",2080,7.1],["MT",886,6.8],["SP",40494,5.9],["MG",11354,5.6],["PR",4923,5.0]];
+  var AVG = 8.1;
+  var MON = {
+    es: ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"],
+    en: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+  };
+  var T = {
+    es: { avg: "Promedio 8.1%", late: "tarde", orders: "pedidos", bf: "Black Friday" },
+    en: { avg: "Average 8.1%", late: "late", orders: "orders", bf: "Black Friday" }
+  };
+  var NS = "http://www.w3.org/2000/svg";
+  function el(name, attrs, parent) {
+    var n = document.createElementNS(NS, name);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  function fmt(n) { return n.toLocaleString("en-US"); }
+  function monthLabel(m, lang) { var p = m.split("-"); return MON[lang][+p[1] - 1] + " " + p[0]; }
+
+  function tipFor(box) {
+    var t = box.querySelector(".tip");
+    if (!t) { t = document.createElement("div"); t.className = "tip"; t.hidden = true; box.appendChild(t); }
+    return t;
+  }
+  function showTip(box, svg, x, y, vbW, html) {
+    var t = tipFor(box), r = svg.getBoundingClientRect(), s = r.width / vbW;
+    t.innerHTML = html; t.hidden = false;
+    var px = Math.max(70, Math.min(r.width - 70, x * s));
+    t.style.left = px + "px"; t.style.top = (y * s) + "px";
+  }
+  function hideTip(box) { tipFor(box).hidden = true; }
+
+  function table(box, head, rows) {
+    var tb = document.createElement("table"); tb.className = "sr-table";
+    tb.innerHTML = "<tr>" + head.map(function (h) { return "<th>" + h + "</th>"; }).join("") + "</tr>" +
+      rows.map(function (r) { return "<tr>" + r.map(function (c) { return "<td>" + c + "</td>"; }).join("") + "</tr>"; }).join("");
+    box.appendChild(tb);
+  }
+
+  function drawMonth(lang) {
+    var box = document.getElementById("chart-month"); box.innerHTML = "";
+    var W = 520, H = 260, m = { t: 26, r: 16, b: 30, l: 34 };
+    var iw = W - m.l - m.r, ih = H - m.t - m.b, yMax = 25;
+    var svg = el("svg", { viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": lang === "es" ? "Gráfica de línea del porcentaje de entregas tarde por mes" : "Line chart of late delivery percentage by month" }, box);
+    var x = function (i) { return m.l + i * iw / (months.length - 1); };
+    var y = function (v) { return m.t + ih - v / yMax * ih; };
+    [0, 5, 10, 15, 20, 25].forEach(function (v) {
+      el("line", { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), class: "grid" }, svg);
+      el("text", { x: m.l - 8, y: y(v) + 4, "text-anchor": "end" }, svg).textContent = v + "%";
+    });
+    [0, 6, 12, 19].forEach(function (i) {
+      el("text", { x: x(i), y: H - 8, "text-anchor": i === 0 ? "start" : i === 19 ? "end" : "middle" }, svg).textContent = monthLabel(months[i], lang);
+    });
+    el("line", { x1: m.l, x2: W - m.r, y1: y(AVG), y2: y(AVG), class: "ref" }, svg);
+    el("text", { x: x(5), y: y(AVG) - 6, "text-anchor": "middle" }, svg).textContent = T[lang].avg;
+    var area = "M" + x(0) + "," + y(0) + late.map(function (v, i) { return " L" + x(i) + "," + y(v); }).join("") + " L" + x(19) + "," + y(0) + " Z";
+    el("path", { d: area, fill: "var(--accent)", "fill-opacity": "0.10", stroke: "none" }, svg);
+    el("path", { d: late.map(function (v, i) { return (i ? "L" : "M") + x(i) + "," + y(v); }).join(" "), fill: "none", stroke: "var(--accent)", "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round", class: "line" }, svg);
+    [[10, T[lang].bf + " 14.3%"], [14, monthLabel(months[14], lang) + " 21.4%"]].forEach(function (p) {
+      var i = p[0];
+      el("circle", { cx: x(i), cy: y(late[i]), r: 4.5, fill: "var(--signal)", stroke: "var(--surface)", "stroke-width": 2 }, svg);
+      el("text", { x: x(i), y: y(late[i]) - 10, "text-anchor": "middle", class: "lab" }, svg).textContent = p[1];
+    });
+    var cursor = el("circle", { r: 4.5, fill: "var(--accent)", stroke: "var(--surface)", "stroke-width": 2, visibility: "hidden" }, svg);
+    var hit = el("rect", { x: m.l, y: m.t, width: iw, height: ih, fill: "transparent" }, svg);
+    function move(ev) {
+      var r = svg.getBoundingClientRect(), vx = (ev.clientX - r.left) * W / r.width;
+      var i = Math.max(0, Math.min(19, Math.round((vx - m.l) / (iw / 19))));
+      cursor.setAttribute("cx", x(i)); cursor.setAttribute("cy", y(late[i])); cursor.setAttribute("visibility", "visible");
+      showTip(box, svg, x(i), y(late[i]), W, monthLabel(months[i], lang) + " · " + late[i].toFixed(1) + "% " + T[lang].late + "<br>" + fmt(orders[i]) + " " + T[lang].orders);
+    }
+    hit.addEventListener("pointermove", move);
+    hit.addEventListener("pointerdown", move);
+    hit.addEventListener("pointerleave", function () { cursor.setAttribute("visibility", "hidden"); hideTip(box); });
+    table(box, [lang === "es" ? "Mes" : "Month", "% " + T[lang].late, T[lang].orders], months.map(function (mm, i) { return [monthLabel(mm, lang), late[i] + "%", fmt(orders[i])]; }));
+  }
+
+  function drawState(lang) {
+    var box = document.getElementById("chart-state"); box.innerHTML = "";
+    var row = 18, W = 420, m = { t: 4, r: 44, b: 22, l: 30 }, H = m.t + states.length * row + m.b;
+    var iw = W - m.l - m.r, xMax = 20;
+    var svg = el("svg", { viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": lang === "es" ? "Gráfica de barras del porcentaje de entregas tarde por estado" : "Bar chart of late delivery percentage by state" }, box);
+    var x = function (v) { return m.l + v / xMax * iw; };
+    [0, 5, 10, 15, 20].forEach(function (v) {
+      el("line", { x1: x(v), x2: x(v), y1: m.t, y2: H - m.b, class: "grid" }, svg);
+      el("text", { x: x(v), y: H - 6, "text-anchor": "middle" }, svg).textContent = v + "%";
+    });
+    states.forEach(function (s, i) {
+      var yy = m.t + i * row + 3, bh = row - 6, w = x(s[2]) - m.l, rj = s[0] === "RJ";
+      var g = el("g", {}, svg);
+      el("path", { d: "M" + m.l + "," + yy + " h" + (w - 3) + " a3,3 0 0 1 3,3 v" + (bh - 6) + " a3,3 0 0 1 -3,3 h" + (-(w - 3)) + " Z", fill: rj ? "var(--accent)" : "var(--bar)" }, g);
+      el("text", { x: m.l - 6, y: yy + bh - 2, "text-anchor": "end", class: rj ? "lab" : "" }, g).textContent = s[0];
+      el("text", { x: x(s[2]) + 5, y: yy + bh - 2, class: rj ? "lab" : "" }, g).textContent = s[2].toFixed(1) + "%";
+      var hit = el("rect", { x: 0, y: m.t + i * row, width: W, height: row, fill: "transparent" }, g);
+      function show() { showTip(box, svg, x(s[2]) / 2 + m.l / 2, yy, W, s[0] + " · " + s[2].toFixed(1) + "% " + T[lang].late + "<br>" + fmt(s[1]) + " " + T[lang].orders); }
+      hit.addEventListener("pointerenter", show);
+      hit.addEventListener("pointerdown", show);
+      hit.addEventListener("pointerleave", function () { hideTip(box); });
+    });
+    el("line", { x1: x(AVG), x2: x(AVG), y1: m.t, y2: H - m.b, class: "ref" }, svg);
+    table(box, [lang === "es" ? "Estado" : "State", T[lang].orders, "% " + T[lang].late], states.map(function (s) { return [s[0], fmt(s[1]), s[2] + "%"]; }));
+  }
+
+  function setLang(lang) {
+    root.setAttribute("data-lang", lang);
+    root.setAttribute("lang", lang);
+    document.getElementById("btn-es").setAttribute("aria-pressed", lang === "es");
+    document.getElementById("btn-en").setAttribute("aria-pressed", lang === "en");
+    drawMonth(lang); drawState(lang);
+    try { localStorage.setItem("lang", lang); } catch (e) {}
+  }
+
+  document.querySelectorAll("[data-set]").forEach(function (b) {
+    b.addEventListener("click", function () { setLang(b.getAttribute("data-set")); });
+  });
+
+  var start = "es";
+  try { start = localStorage.getItem("lang") || ((navigator.language || "es").slice(0, 2) === "en" ? "en" : "es"); } catch (e) {}
+  if (location.hash === "#en" || location.hash === "#es") start = location.hash.slice(1);
+  setLang(start);
+})();
+</script>
+</body>
+</html>
