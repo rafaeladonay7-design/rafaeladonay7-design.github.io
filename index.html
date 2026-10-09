@@ -3,104 +3,141 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Rafael Rocha · Portafolio</title>
-<meta name="description" content="Rafael Adonay Rocha Gutiérrez: mejora continua y supply chain en Guadalajara. Lean Six Sigma Green Belt; 5S, A3 y Kaizen en planta, y SQL, Python y Power BI para decidir cuánto inventario tener.">
+<title>Adonay Rocha Portfolio</title>
+<meta name="description" content="Rafael Adonay Rocha Gutiérrez: mejora continua y supply chain. Lean Six Sigma Green Belt, 5S, A3 y Kaizen, con análisis de datos en SQL, Python y Power BI.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Editorial, una sola columna sobre negro cálido: titulares en serif, texto en sans, etiquetas en mono. */
+/* Layout: one narrow column on black; a gray hero band, then projects as full-width link rows. Single dark look by design. */
 :root {
   color-scheme: dark;
-  --bg: #13110f;
-  --rule: #2a2622;
-  --text: #efe8dc;
-  --text-2: #b3ab9f;
-  --text-3: #7d766c;
-  --accent: #d8a65a;
-  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
-  --sans: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --black: #0b0b0c;
+  --gray-1: #18181b;
+  --gray-2: #232327;
+  --gray-3: #34343a;
+  --white: #ffffff;
+  --text-2: #c8c8ce;
+  --text-3: #8f8f97;
+  --display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--bg); color: var(--text); font: 400 1rem/1.65 var(--sans); }
+body { margin: 0; background: var(--black); color: var(--white); font: 400 1rem/1.6 var(--body); }
 [data-lang="es"] [data-l="en"], [data-lang="en"] [data-l="es"] { display: none !important; }
+
+.wrap { max-width: 50rem; margin: 0 auto; padding-inline: 16px; }
+@media (min-width: 40rem) { .wrap { padding-inline: 32px; } }
 a { color: inherit; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
-.wrap { max-width: 44rem; margin: 0 auto; padding-inline: 16px; }
-@media (min-width: 40rem) { .wrap { padding-inline: 28px; } }
-.label { margin: 0; font: 500 0.6875rem/1.4 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; border-radius: 4px; }
 
-/* Barra superior */
-.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 22px; max-width: 52rem; }
-.brand { font: 400 1.35rem/1 var(--serif); text-decoration: none; }
+.label { margin: 0; font: 500 0.75rem/1.3 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); }
+
+/* Top bar */
+.top { border-bottom: 1px solid var(--gray-2); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.brand { font: 700 0.95rem/1 var(--display); font-stretch: 112%; text-decoration: none; }
 .top nav { display: flex; align-items: center; gap: 18px; }
-.top nav a { font: 500 0.6875rem/1 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); text-decoration: none; }
-.top nav a:hover { color: var(--text); }
-.lang { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; padding: 2px; }
-.lang button { font: 500 0.6875rem/1 var(--mono); letter-spacing: 0.08em; border: 0; background: transparent; color: var(--text-3); padding: 6px 9px; border-radius: 999px; cursor: pointer; }
-.lang button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
-@media (max-width: 34rem) { .top nav .hide-sm { display: none; } }
+.top nav a { font: 500 0.8125rem/1 var(--mono); color: var(--text-2); text-decoration: none; }
+.top nav a:hover { color: var(--white); }
+.lang { display: inline-flex; border: 1px solid var(--gray-3); border-radius: 999px; padding: 2px; }
+.lang button {
+  font: 500 0.75rem/1 var(--mono); letter-spacing: 0.06em; border: 0; background: transparent; color: var(--text-3);
+  padding: 7px 11px; border-radius: 999px; cursor: pointer;
+}
+.lang button[aria-pressed="true"] { background: var(--white); color: var(--black); }
+@media (max-width: 30rem) { .top nav .hide-sm { display: none; } }
 
-/* Portada */
-.hero { padding-block: 56px 40px; }
-.hero .label::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 8px; border-radius: 50%; background: var(--accent); vertical-align: 1px; }
-.hero h1 { margin: 18px 0 22px; font: 400 clamp(2.7rem, 9vw, 4.6rem)/1.02 var(--serif); letter-spacing: -0.01em; text-wrap: balance; }
-.hero h1 em { font-style: italic; color: var(--accent); }
-.hero .lede { margin: 0; max-width: 34rem; font-size: 1.0625rem; color: var(--text-2); }
-.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font: 500 0.75rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; padding: 13px 16px; border-radius: 3px; border: 1px solid var(--rule); color: var(--text); }
-.btn:hover { border-color: var(--text-3); }
-.btn.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
-.btn.primary:hover { background: var(--accent); border-color: var(--accent); }
+/* Hero band */
+.hero { background: var(--gray-1); border-bottom: 1px solid var(--gray-2); }
+.hero .wrap { padding-block: 64px 56px; display: grid; gap: 18px; }
+.hero h1 {
+  margin: 0; font: 800 clamp(2.4rem, 7vw, 4.2rem)/0.98 var(--display); font-stretch: 120%; letter-spacing: -0.015em; text-wrap: balance;
+}
+.hero .role { margin: 0; font: 500 1.05rem/1.4 var(--mono); color: var(--text-2); }
+.hero p.bio { margin: 0; max-width: 36rem; color: var(--text-2); font-size: 1.0625rem; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 0; padding: 0; list-style: none; }
+.facts li { font: 400 0.8125rem/1 var(--mono); color: var(--text-2); background: var(--gray-2); border: 1px solid var(--gray-3); padding: 8px 10px; border-radius: 4px; }
 
-/* Secciones */
-section { padding-block: 40px; }
-.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 8px; }
-h2 { margin: 0 0 14px; font: 400 2rem/1.1 var(--serif); }
-h3.sub { margin: 36px 0 14px; font: 400 1.5rem/1.15 var(--serif); }
+section { padding-block: 48px; border-bottom: 1px solid var(--gray-2); }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+.sec-head h2 { margin: 0; font: 700 1.5rem/1.1 var(--display); font-stretch: 110%; }
 
-/* Trabajo seleccionado */
-.work { list-style: none; margin: 0; padding: 0; }
-.work li { border-top: 1px solid var(--rule); }
-.work li:last-child { border-bottom: 1px solid var(--rule); }
-.work a, .work .item { display: grid; grid-template-columns: 1fr auto; gap: 6px 24px; padding-block: 22px; text-decoration: none; }
-.work a:hover h4 { color: var(--accent); }
-.work h4 { margin: 0; font: 400 1.6rem/1.15 var(--serif); text-wrap: balance; transition: color .15s; }
-.work p { grid-column: 1; margin: 0; max-width: 33rem; font-size: 0.9375rem; color: var(--text-2); }
-.work .tag { grid-column: 2; grid-row: 1; align-self: start; padding-top: 8px; font: 500 0.6875rem/1.4 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); white-space: nowrap; text-align: right; }
-@media (max-width: 34rem) {
-  .work a, .work .item { grid-template-columns: 1fr; }
-  .work .tag { grid-column: 1; grid-row: auto; padding-top: 2px; text-align: left; }
+/* Project link rows */
+.projects { display: grid; gap: 12px; }
+.project {
+  display: grid; grid-template-columns: 1fr auto; gap: 6px 20px; align-items: start;
+  background: var(--gray-1); border: 1px solid var(--gray-2); border-radius: 8px; padding: 22px 22px 20px;
+  text-decoration: none; transition: background .15s, border-color .15s;
+}
+.project:hover { background: var(--gray-2); border-color: var(--gray-3); }
+.project > div { min-width: 0; display: grid; gap: 8px; }
+.project h3 { margin: 0; font: 700 1.2rem/1.2 var(--display); font-stretch: 106%; text-wrap: balance; }
+.project p { margin: 0; color: var(--text-2); max-width: 38rem; }
+.project .meta { font: 400 0.8125rem/1.4 var(--mono); color: var(--text-3); }
+.project .go {
+  font: 500 0.8125rem/1 var(--mono); color: var(--black); background: var(--white); padding: 9px 12px; border-radius: 4px;
+  white-space: nowrap; align-self: start;
+}
+@media (max-width: 36rem) {
+  .project { grid-template-columns: 1fr; }
+  .project .go { justify-self: start; margin-top: 8px; }
 }
 
-/* Sobre mí */
-.prose p { margin: 0 0 16px; color: var(--text-2); max-width: 36rem; }
-.prose p:first-child { color: var(--text); font-size: 1.125rem; }
-.rows { margin: 0; padding: 0; list-style: none; }
-.rows li { display: grid; grid-template-columns: 9.5rem 1fr; gap: 4px 20px; padding-block: 12px; }
-.rows .k { font: 500 0.6875rem/1.9 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); }
-.rows .v b { font-weight: 600; color: var(--text); }
-.rows .v span.d { display: block; color: var(--text-3); font-size: 0.9375rem; }
-.rows .v { color: var(--text-2); }
-@media (max-width: 34rem) { .rows li { grid-template-columns: 1fr; } }
-.now { list-style: none; margin: 0; padding: 0; }
-.now li { position: relative; padding: 4px 0 4px 22px; color: var(--text-2); }
-.now li::before { content: "–"; position: absolute; left: 0; color: var(--text-3); }
+/* Experience */
+.jobs { display: grid; padding: 0; margin: 0; list-style: none; }
+.jobs > li { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; padding-block: 14px; border-top: 1px solid var(--gray-2); }
+.jobs > li:first-child { border-top: 0; padding-top: 0; }
+.jobs b { font-weight: 600; }
+.jobs .when { font: 400 0.8125rem/1.6 var(--mono); color: var(--text-3); text-align: right; }
+.jobs .what { grid-column: 1 / -1; color: var(--text-2); font-size: 0.9375rem; }
+@media (max-width: 30rem) { .jobs > li { grid-template-columns: 1fr; } .jobs .when { text-align: left; } }
 
-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 56px 40px; max-width: 52rem; }
-footer a { text-decoration: none; }
-footer a:hover { color: var(--text); }
+.toolset { display: grid; gap: 0; margin: 0; }
+.toolset > div { display: grid; grid-template-columns: 11rem 1fr; gap: 10px 20px; padding-block: 16px; border-top: 1px solid var(--gray-2); }
+.toolset > div:first-child { border-top: 0; padding-top: 0; }
+.toolset dt { font: 600 0.9375rem/1.4 var(--body); padding-top: 6px; }
+.toolset dd { margin: 0; min-width: 0; }
+@media (max-width: 36rem) { .toolset > div { grid-template-columns: 1fr; } .toolset dt { padding-top: 0; } }
+.skills { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+.skills li { font: 400 0.8125rem/1 var(--mono); padding: 9px 11px; border-radius: 4px; background: var(--gray-1); border: 1px solid var(--gray-2); color: var(--text-2); }
+
+/* Contact */
+.contact { display: grid; gap: 18px; }
+.contact h2 { margin: 0; font: 800 clamp(1.7rem, 4.5vw, 2.4rem)/1.05 var(--display); font-stretch: 116%; text-wrap: balance; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font: 500 0.875rem/1 var(--mono);
+  padding: 13px 16px; border-radius: 4px; border: 1px solid var(--gray-3); background: var(--gray-1); color: var(--white);
+}
+.btn:hover { background: var(--gray-2); }
+.btn.primary { background: var(--white); color: var(--black); border-color: var(--white); }
+.btn.primary:hover { background: var(--text-2); }
+
+/* Cifras clave en la portada */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 10px 0 0; padding: 0; list-style: none; }
+.stats li { background: var(--gray-2); border: 1px solid var(--gray-3); border-radius: 6px; padding: 14px 16px; display: grid; gap: 4px; }
+.stats b { font: 800 1.6rem/1 var(--display); font-stretch: 116%; }
+.stats span { font-size: 0.8125rem; line-height: 1.35; color: var(--text-2); }
+@media (max-width: 36rem) { .stats { grid-template-columns: 1fr; } }
+/* Resultados por puesto */
+.res { grid-column: 1 / -1; margin: 6px 0 0; padding-left: 18px; color: var(--text-2); font-size: 0.9375rem; }
+.res li { margin-block: 4px; }
+.res li::marker { color: var(--text-3); }
+.tools-line { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; padding: 0; list-style: none; }
+.tools-line li { font: 400 0.75rem/1 var(--mono); padding: 6px 8px; border-radius: 4px; border: 1px solid var(--gray-3); color: var(--text-3); }
+footer { padding-block: 24px 40px; font: 400 0.8125rem/1.5 var(--mono); color: var(--text-3); }
 </style>
 </head>
 <body>
+
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#">Rafael Rocha</a>
+    <a class="brand" href="#">Adonay Rocha</a>
     <nav>
-      <a class="hide-sm" href="#trabajo"><span data-l="es">Trabajo</span><span data-l="en">Work</span></a>
-      <a class="hide-sm" href="#sobre-mi"><span data-l="es">Sobre mí</span><span data-l="en">About</span></a>
+      <a class="hide-sm" href="https://github.com/rafaeladonay7-design" target="_blank" rel="noopener">GitHub</a>
       <a class="hide-sm" href="https://www.linkedin.com/in/rafael-rocha-14352b370" target="_blank" rel="noopener">LinkedIn</a>
       <div class="lang" role="group" aria-label="Idioma / Language">
         <button type="button" id="btn-es" data-set="es" aria-pressed="true">ES</button>
@@ -110,100 +147,172 @@ footer a:hover { color: var(--text); }
   </div>
 </header>
 
-<main class="wrap">
-  <div class="hero">
-    <p class="label"><span data-l="es">Becario de mejora continua en GPV Americas</span><span data-l="en">Continuous improvement intern at GPV Americas</span></p>
-    <h1>
-      <span data-l="es">Quito el <em>desperdicio</em> de la planta y de los datos.</span>
-      <span data-l="en">I take the <em>waste</em> out of the plant floor and the data.</span>
-    </h1>
-    <p class="lede">
-      <span data-l="es">Ingeniería Industrial en la UAG y Green Belt en Lean Six Sigma. Mejora continua en GPV, planeación de la producción en Jabil, y SQL, Python y Power BI para decidir cuánto inventario tener. Guadalajara, México.</span>
-      <span data-l="en">Industrial Engineering at UAG and Lean Six Sigma Green Belt. Continuous improvement at GPV, production planning at Jabil, and SQL, Python and Power BI to decide how much inventory to hold. Guadalajara, Mexico.</span>
+<div class="hero">
+  <div class="wrap">
+    <p class="label"><span data-l="es">Portafolio</span><span data-l="en">Portfolio</span></p>
+    <h1>Rafael Adonay Rocha Gutiérrez</h1>
+    <p class="role"><span data-l="es">Mejora continua y Supply Chain · Lean Six Sigma Green Belt</span><span data-l="en">Continuous Improvement &amp; Supply Chain · Lean Six Sigma Green Belt</span></p>
+    <p class="bio">
+      <span data-l="es">Estudiante de Ingeniería Industrial en la Universidad Autónoma de Guadalajara, con experiencia en mejora continua (GPV) y planeación de la producción (Jabil). Aplico Lean (5S, A3, Kaizen, value stream mapping) y doy capacitaciones sobre los 8 desperdicios; con SQL, Python y Power BI identifico cuellos de botella en la cadena de suministro y decido cuánto inventario tener.</span>
+      <span data-l="en">Industrial Engineering student at Universidad Autónoma de Guadalajara with experience in continuous improvement (GPV) and production planning (Jabil). I apply Lean (5S, A3, Kaizen, value stream mapping) and deliver training on the 8 wastes; with SQL, Python and Power BI I identify supply chain bottlenecks and decide how much inventory to hold.</span>
     </p>
-    <div class="actions">
-      <a class="btn primary" href="CV_Rafael_Adonay_Rocha.pdf" target="_blank" rel="noopener"><span data-l="es">Descargar CV</span><span data-l="en">Download CV</span> ↓</a>
-      <a class="btn" href="https://www.linkedin.com/in/rafael-rocha-14352b370" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <ul class="facts">
+      <li>Guadalajara, MX</li>
+      <li><span data-l="es">Promedio 9.42</span><span data-l="en">GPA 9.42/10</span></li>
+      <li>Lean Six Sigma Green Belt</li>
+      <li><span data-l="es">Inglés B2</span><span data-l="en">English B2</span></li>
+    </ul>
+    <ul class="stats">
+      <li><b>0.42%</b><span><span data-l="es">ahorro mensual de inventario con una macro de back flush (Jabil)</span><span data-l="en">monthly inventory saving with a backflush macro (Jabil)</span></span></li>
+      <li><b>5S</b><span><span data-l="es">programa en planta con auditorías cruzadas entre dos fábricas (GPV)</span><span data-l="en">plant program with cross-audits between two factories (GPV)</span></span></li>
+      <li><b>280k</b><span><span data-l="es">registros de pedidos analizados en mis proyectos de supply chain</span><span data-l="en">order records analyzed in my supply chain projects</span></span></li>
+    </ul>
+    <div class="links" style="margin-top:6px">
+      <a class="btn primary" href="CV_Rafael_Adonay_Rocha.pdf" target="_blank" rel="noopener"><span data-l="es">Descargar CV</span><span data-l="en">Download CV</span> (PDF) ↓</a>
+      <a class="btn" href="https://github.com/rafaeladonay7-design" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </div>
+</div>
 
-  <section id="trabajo" aria-labelledby="h-work">
+<main class="wrap">
+  <section aria-labelledby="h-exp">
     <div class="sec-head">
-      <p class="label" id="h-work"><span data-l="es">Trabajo seleccionado</span><span data-l="en">Selected work</span></p>
-      <p class="label">2026</p>
+      <h2 id="h-exp"><span data-l="es">Experiencia</span><span data-l="en">Experience</span></h2>
     </div>
-    <ul class="work">
-      <li><div class="item">
-        <h4><span data-l="es">El inventario que existía en el sistema, pero no en el piso</span><span data-l="en">The inventory that existed in the system, but not on the floor</span></h4>
-        <span class="tag">Jabil</span>
-        <p><span data-l="es">Automaticé el back flush con una macro en Excel/VBA y lideré la limpieza de una ubicación WIP: recuperé la trazabilidad y logré un ahorro mensual de 0.42% en inventario, validado con MRP en SAP.</span><span data-l="en">I automated backflush with an Excel/VBA macro and led the cleanup of a WIP location: material traceability restored and a 0.42% monthly inventory saving, validated with MRP in SAP.</span></p>
-      </div></li>
-      <li><div class="item">
-        <h4><span data-l="es">Un programa 5S diseñado para sostenerse</span><span data-l="en">A 5S program built to sustain itself</span></h4>
-        <span class="tag">GPV</span>
-        <p><span data-l="es">Línea base del área piloto, indicadores por área y auditorías cruzadas quincenales entre Factory 1 y Factory 2. Además, capacitaciones sobre los 8 desperdicios, reportes A3 y diagramas de spaghetti.</span><span data-l="en">Pilot area baseline, area-level KPIs and biweekly cross-audits between Factory 1 and Factory 2. Plus training on the 8 wastes, A3 reports and spaghetti diagrams.</span></p>
-      </div></li>
-      <li><a href="https://github.com/rafaeladonay7-design/dataco-python" target="_blank" rel="noopener">
-        <h4><span data-l="es">Cuánto inventario tener cuando el proveedor tarda</span><span data-l="en">How much stock to hold when the supplier is slow</span></h4>
-        <span class="tag">Python ↗</span>
-        <p><span data-l="es">Comparé 5 métodos de pronóstico (el mejor, con 4.3% de error) y calculé stock de seguridad y punto de reorden: pasar de 7 a 30 días de entrega lo duplica.</span><span data-l="en">I compared 5 forecasting methods (the best one at 4.3% error) and calculated safety stock and reorder points: going from 7 to 30 days of lead time doubles it.</span></p>
-      </a></li>
-      <li><a href="https://github.com/rafaeladonay7-design/dataco-sql" target="_blank" rel="noopener">
-        <h4><span data-l="es">Por qué todos los envíos First Class llegan tarde</span><span data-l="en">Why every First Class shipment arrives late</span></h4>
-        <span class="tag">SQL ↗</span>
-        <p><span data-l="es">En 180,519 líneas de pedido, el problema no era la región: First Class promete 1 día y siempre tarda 2. Con clasificación ABC de productos.</span><span data-l="en">Across 180,519 order lines the problem wasn't the region: First Class promises 1 day and always takes 2. With an ABC product classification.</span></p>
-      </a></li>
-      <li><a href="https://github.com/rafaeladonay7-design/olist-sql" target="_blank" rel="noopener">
-        <h4><span data-l="es">Un pedido tarde cuesta casi dos estrellas</span><span data-l="en">A late order costs almost two stars</span></h4>
-        <span class="tag">SQL ↗</span>
-        <p><span data-l="es">Con 99,441 pedidos reales de Olist (Brasil): la calificación del cliente baja de 4.29 a 2.57 cuando el pedido llega tarde.</span><span data-l="en">Using 99,441 real Olist orders (Brazil): the customer rating drops from 4.29 to 2.57 when the order is late.</span></p>
-      </a></li>
+    <ul class="jobs">
+      <li>
+        <span><b><span data-l="es">Becario de Mejora Continua</span><span data-l="en">Continuous Improvement Intern</span></b> · GPV Americas</span>
+        <span class="when">2026 – <span data-l="es">presente</span><span data-l="en">present</span></span>
+        <ul class="res">
+          <li><span data-l="es">Establecí la línea base del área piloto y los indicadores por área del programa 5S.</span><span data-l="en">Set the pilot area baseline and area-level KPIs for the 5S program.</span></li>
+          <li><span data-l="es">Diseñé auditorías cruzadas quincenales entre Factory 1 y Factory 2 para sostener el estándar.</span><span data-l="en">Designed biweekly cross-audits between Factory 1 and Factory 2 to sustain the standard.</span></li>
+          <li><span data-l="es">Impartí capacitaciones sobre los 8 desperdicios de Lean; elaboré reportes A3 y diagramas de spaghetti.</span><span data-l="en">Delivered training on Lean's 8 wastes; built A3 reports and spaghetti diagrams.</span></li>
+        </ul>
+        <ul class="tools-line"><li>5S</li><li>A3</li><li>Kaizen</li><li><span data-l="es">8 desperdicios</span><span data-l="en">8 wastes</span></li></ul>
+      </li>
+      <li>
+        <span><b><span data-l="es">Becario de Planeación de la Producción</span><span data-l="en">Production Planning Intern</span></b> · Jabil</span>
+        <span class="when"><span data-l="es">jun – jul 2026</span><span data-l="en">Jun – Jul 2026</span></span>
+        <ul class="res">
+          <li><span data-l="es">Automaticé el back flush con una macro en Excel/VBA: ahorro mensual de 0.42% en inventario, validado con MRP.</span><span data-l="en">Automated backflush with an Excel/VBA macro: 0.42% monthly inventory saving, validated with MRP.</span></li>
+          <li><span data-l="es">Lideré la limpieza de una ubicación WIP para eliminar inventario fantasma y recuperar la trazabilidad.</span><span data-l="en">Led the cleanup of a WIP location to remove phantom inventory and restore traceability.</span></li>
+          <li><span data-l="es">Seguimiento a shortages, inventario E&amp;O y RMAs; actualización del item master en SAP.</span><span data-l="en">Tracked shortages, E&amp;O inventory and RMAs; maintained the SAP item master.</span></li>
+        </ul>
+        <ul class="tools-line"><li>SAP</li><li>MRP</li><li>BOM</li><li>Excel VBA</li></ul>
+      </li>
     </ul>
   </section>
 
-  <section id="sobre-mi" aria-labelledby="h-about">
-    <h2 id="h-about"><span data-l="es">Sobre mí</span><span data-l="en">About</span></h2>
-    <div class="prose">
-      <p><span data-l="es">Soy Rafael Rocha. Estudio Ingeniería Industrial y trabajo en mejora continua: busco dónde se pierde tiempo, material o información, y lo quito.</span><span data-l="en">I'm Rafael Rocha. I study Industrial Engineering and work in continuous improvement: I look for where time, material or information gets lost, and take it out.</span></p>
-      <p><span data-l="es">Hoy llevo el programa 5S en GPV: medimos el avance por área, auditamos entre fábricas y doy capacitaciones sobre los 8 desperdicios de Lean.</span><span data-l="en">Right now I run the 5S program at GPV: we track progress by area, audit across factories, and I deliver training on Lean's 8 wastes.</span></p>
-      <p><span data-l="es">Antes estuve en planeación de la producción en Jabil. Lo más útil que hice ahí fue automatizar el back flush: el sistema mostraba material que en el piso ya no estaba, y arreglarlo devolvió la trazabilidad y bajó el inventario.</span><span data-l="en">Before that I was in production planning at Jabil. The most useful thing I did there was automate backflush: the system showed material that was no longer on the floor, and fixing it restored traceability and cut inventory.</span></p>
+  <section aria-labelledby="h-proj">
+    <div class="sec-head">
+      <h2 id="h-proj"><span data-l="es">Proyectos</span><span data-l="en">Projects</span></h2>
+      <span class="label"><span data-l="es">Código en GitHub</span><span data-l="en">Code on GitHub</span></span>
     </div>
+    <div class="projects">
+      <a class="project" href="https://github.com/rafaeladonay7-design/olist-sql" target="_blank" rel="noopener">
+        <div>
+          <h3><span data-l="es">Diagnóstico logístico de un marketplace</span><span data-l="en">Marketplace logistics diagnostic</span></h3>
+          <p>
+            <span data-l="es">Un pedido tarde baja la calificación del cliente de 4.29 a 2.57. Lo encontré analizando 99,441 pedidos reales de Olist, un marketplace de Brasil.</span>
+            <span data-l="en">A late order drops the customer rating from 4.29 to 2.57. I found it by analyzing 99,441 real orders from Olist, a Brazilian marketplace.</span>
+          </p>
+          <span class="meta">SQL · SQLite · <span data-l="es">11 consultas</span><span data-l="en">11 queries</span></span>
+        </div>
+        <span class="go"><span data-l="es">Ver en GitHub</span><span data-l="en">View on GitHub</span> ↗</span>
+      </a>
+      <a class="project" href="https://github.com/rafaeladonay7-design/dataco-sql" target="_blank" rel="noopener">
+        <div>
+          <h3><span data-l="es">Desempeño de envíos y rentabilidad</span><span data-l="en">Shipping performance and profitability</span></h3>
+          <p>
+            <span data-l="es">Analicé 180,519 líneas de pedido de DataCo para entender por qué más de la mitad llega tarde. La causa es la promesa de entrega: First Class promete 1 día y siempre tarda 2. Incluye clasificación ABC de productos.</span>
+            <span data-l="en">I analyzed 180,519 DataCo order lines to understand why more than half arrive late. The cause is the delivery promise: First Class promises 1 day and always takes 2. Includes an ABC product classification.</span>
+          </p>
+          <span class="meta">SQL · SQLite · <span data-l="es">10 consultas</span><span data-l="en">10 queries</span></span>
+        </div>
+        <span class="go"><span data-l="es">Ver en GitHub</span><span data-l="en">View on GitHub</span> ↗</span>
+      </a>
+      <a class="project" href="https://github.com/rafaeladonay7-design/dataco-python" target="_blank" rel="noopener">
+        <div>
+          <h3><span data-l="es">Pronóstico de demanda y punto de reorden</span><span data-l="en">Demand forecasting and reorder points</span></h3>
+          <p>
+            <span data-l="es">Comparé 5 métodos de pronóstico para los 7 productos que generan el 82.5% de las ventas de DataCo y calculé su stock de seguridad y punto de reorden. Lo que más mueve el inventario es el tiempo de entrega del proveedor, no el nivel de servicio.</span>
+            <span data-l="en">I compared 5 forecasting methods for the 7 products that generate 82.5% of DataCo's sales and calculated their safety stock and reorder points. Supplier lead time moves inventory more than the service level does.</span>
+          </p>
+          <span class="meta">Python · pandas · matplotlib · Jupyter</span>
+        </div>
+        <span class="go"><span data-l="es">Ver en GitHub</span><span data-l="en">View on GitHub</span> ↗</span>
+      </a>
+    </div>
+  </section>
 
-    <h3 class="sub"><span data-l="es">Dónde he estado</span><span data-l="en">Where I've been</span></h3>
-    <ul class="rows">
-      <li><span class="k"><span data-l="es">2026 – hoy</span><span data-l="en">2026 – now</span></span>
-        <span class="v"><b><span data-l="es">Becario de Mejora Continua</span><span data-l="en">Continuous Improvement Intern</span></b>, GPV Americas<span class="d"><span data-l="es">Programa 5S, A3, diagramas de spaghetti y capacitaciones Lean.</span><span data-l="en">5S program, A3, spaghetti diagrams and Lean training.</span></span></span></li>
-      <li><span class="k"><span data-l="es">Jun – jul 2026</span><span data-l="en">Jun – Jul 2026</span></span>
-        <span class="v"><b><span data-l="es">Becario de Planeación de la Producción</span><span data-l="en">Production Planning Intern</span></b>, Jabil<span class="d"><span data-l="es">MRP, BOM e item master en SAP; shortages, E&amp;O y RMAs.</span><span data-l="en">MRP, BOM and item master in SAP; shortages, E&amp;O and RMAs.</span></span></span></li>
+  <section aria-labelledby="h-skills">
+    <div class="sec-head">
+      <h2 id="h-skills"><span data-l="es">Herramientas</span><span data-l="en">Tools</span></h2>
+    </div>
+    <dl class="toolset">
+      <div>
+        <dt><span data-l="es">Análisis de datos</span><span data-l="en">Data analysis</span></dt>
+        <dd><ul class="skills"><li><span data-l="es">SQL (JOIN, CTE, funciones de ventana)</span><span data-l="en">SQL (JOIN, CTE, window functions)</span></li><li>Python (pandas, matplotlib)</li><li><span data-l="es">Excel avanzado (tablas dinámicas)</span><span data-l="en">Advanced Excel (pivot tables)</span></li><li>Google Sheets</li><li>Power Query</li></ul></dd>
+      </div>
+      <div>
+        <dt><span data-l="es">Visualización y BI</span><span data-l="en">Visualization and BI</span></dt>
+        <dd><ul class="skills"><li><span data-l="es">Power BI (DAX básico)</span><span data-l="en">Power BI (basic DAX)</span></li><li>Tableau</li><li>Looker Studio</li></ul></dd>
+      </div>
+      <div>
+        <dt><span data-l="es">Automatización</span><span data-l="en">Automation</span></dt>
+        <dd><ul class="skills"><li><span data-l="es">VBA (macros de Excel)</span><span data-l="en">VBA (Excel macros)</span></li><li>Git · GitHub</li></ul></dd>
+      </div>
+      <div>
+        <dt><span data-l="es">Lean y mejora continua</span><span data-l="en">Lean and continuous improvement</span></dt>
+        <dd><ul class="skills"><li>Lean Six Sigma Green Belt</li><li>Kaizen</li><li><span data-l="es">Reportes A3</span><span data-l="en">A3 reports</span></li><li>Value stream mapping</li><li><span data-l="es">Sistemas 5S</span><span data-l="en">5S systems</span></li><li><span data-l="es">Diagramas de spaghetti</span><span data-l="en">Spaghetti diagrams</span></li><li><span data-l="es">8 desperdicios</span><span data-l="en">8 wastes</span></li></ul></dd>
+      </div>
+      <div>
+        <dt><span data-l="es">Estadística y mejora</span><span data-l="en">Statistics and improvement</span></dt>
+        <dd><ul class="skills"><li>Minitab</li><li><span data-l="es">Control estadístico (SPC)</span><span data-l="en">Statistical process control</span></li><li><span data-l="es">Pronósticos</span><span data-l="en">Forecasting</span></li><li><span data-l="es">Estudio de tiempos</span><span data-l="en">Time study</span></li></ul></dd>
+      </div>
+      <div>
+        <dt><span data-l="es">Operaciones</span><span data-l="en">Operations</span></dt>
+        <dd><ul class="skills"><li>SAP (BOM, MRP, item master)</li><li><span data-l="es">Clasificación ABC</span><span data-l="en">ABC classification</span></li><li>EOQ</li><li>MRP</li></ul></dd>
+      </div>
+    </dl>
+  </section>
+
+  <section aria-labelledby="h-cert">
+    <div class="sec-head">
+      <h2 id="h-cert"><span data-l="es">Certificaciones</span><span data-l="en">Certifications</span></h2>
+    </div>
+    <ul class="jobs">
+      <li>
+        <span><b><span data-l="es">Fundamentos de Análisis de Datos</span><span data-l="en">Data Analytics Essentials</span></b> · Cisco Networking Academy</span>
+        <span class="when">2026</span>
+      </li>
+      <li>
+        <span><b>Lean Six Sigma Green Belt</b> · International Lean Six Sigma</span>
+        <span class="when">2026</span>
+      </li>
+      <li>
+        <span><b><span data-l="es">Metodologías Ágiles</span><span data-l="en">Agile Methodologies</span></b> · Bosch · UAG</span>
+        <span class="when">2026</span>
+      </li>
     </ul>
+  </section>
 
-    <h3 class="sub"><span data-l="es">Herramientas</span><span data-l="en">Toolkit</span></h3>
-    <ul class="rows">
-      <li><span class="k">Lean</span><span class="v">Green Belt, Kaizen, value stream mapping, A3, <span data-l="es">sistemas 5S, diagramas de spaghetti, estudio de tiempos</span><span data-l="en">5S systems, spaghetti diagrams, time study</span>, Minitab, SPC</span></li>
-      <li><span class="k">Supply chain</span><span class="v">SAP (BOM, MRP, item master), <span data-l="es">stock de seguridad, punto de reorden, EOQ, clasificación ABC, pronósticos</span><span data-l="en">safety stock, reorder point, EOQ, ABC analysis, forecasting</span></span></li>
-      <li><span class="k"><span data-l="es">Datos</span><span data-l="en">Data</span></span><span class="v">SQL, Python (pandas), Power BI, Power Query, <span data-l="es">Excel avanzado con macros VBA</span><span data-l="en">advanced Excel with VBA macros</span></span></li>
-    </ul>
-
-    <h3 class="sub"><span data-l="es">Estudios</span><span data-l="en">Studying</span></h3>
-    <div class="prose"><p style="font-size:1rem;color:var(--text-2)">
-      <span data-l="es">Ingeniería Industrial en la Universidad Autónoma de Guadalajara; termino en junio de 2027 con promedio de 9.42. Green Belt en Lean Six Sigma, Fundamentos de Análisis de Datos (Cisco) y Metodologías Ágiles (Bosch · UAG). Español nativo, inglés B2.</span>
-      <span data-l="en">Industrial Engineering at Universidad Autónoma de Guadalajara, finishing June 2027 with a 9.42/10 GPA. Lean Six Sigma Green Belt, Data Analytics Essentials (Cisco) and Agile Methodologies (Bosch · UAG). Spanish native, English B2.</span>
-    </p></div>
-
-    <h3 class="sub"><span data-l="es">Ahora mismo</span><span data-l="en">Currently</span></h3>
-    <ul class="now">
-      <li><span data-l="es">Sosteniendo el 5S en GPV con auditorías cruzadas entre fábricas.</span><span data-l="en">Sustaining 5S at GPV with cross-factory audits.</span></li>
-      <li><span data-l="es">Terminando un estudio de tiempos del surtido de kits para seis líneas de ensamble.</span><span data-l="en">Finishing a time study of kit picking for six assembly lines.</span></li>
-      <li><span data-l="es">Buscando prácticas en supply chain y Lean en Guadalajara.</span><span data-l="en">Looking for supply chain and Lean internships in Guadalajara.</span></li>
-    </ul>
+  <section aria-labelledby="h-contact" style="border-bottom:0">
+    <div class="contact">
+      <p class="label"><span data-l="es">Contacto</span><span data-l="en">Contact</span></p>
+      <h2 id="h-contact"><span data-l="es">Hablemos de mejora continua y supply chain.</span><span data-l="en">Let's talk continuous improvement and supply chain.</span></h2>
+      <div class="links">
+        <a class="btn primary" href="CV_Rafael_Adonay_Rocha.pdf" target="_blank" rel="noopener"><span data-l="es">Descargar CV</span><span data-l="en">Download CV</span> (PDF) ↓</a>
+        <a class="btn" href="mailto:rafaeladonay.7@gmail.com"><span data-l="es">Correo</span><span data-l="en">Email</span> ↗</a>
+        <a class="btn" href="https://www.linkedin.com/in/rafael-rocha-14352b370" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" href="https://github.com/rafaeladonay7-design" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">
-    <span class="label">Guadalajara, México</span>
-    <a class="label" href="mailto:rafaeladonay.7@gmail.com">rafaeladonay.7@gmail.com</a>
-  </div>
+  <div class="wrap">Rafael Adonay Rocha Gutiérrez · Guadalajara, México · rafaeladonay.7@gmail.com · 2026</div>
 </footer>
 
 <script>
