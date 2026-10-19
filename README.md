@@ -10,6 +10,7 @@ Personal portfolio of Rafael Adonay Rocha Gutiérrez, Industrial Engineering stu
 
 | Project | Data | Repository |
 |---|---|---|
+| Data quality and integrity validation | 550,759 Olist records, R | [olist-r](https://github.com/rafaeladonay7-design/olist-r) |
 | Marketplace logistics diagnostic | 99,441 real orders from Olist (Brazil) | [olist-sql](https://github.com/rafaeladonay7-design/olist-sql) |
 | Shipping performance and profitability | 180,519 order lines from DataCo Global | [dataco-sql](https://github.com/rafaeladonay7-design/dataco-sql) |
 | Demand forecasting and reorder points | DataCo Global, Python | [dataco-python](https://github.com/rafaeladonay7-design/dataco-python) |
@@ -28,6 +29,7 @@ Portafolio personal de Rafael Adonay Rocha Gutiérrez, estudiante de Ingeniería
 
 | Proyecto | Datos | Repositorio |
 |---|---|---|
+| Validación de calidad e integridad de datos | 550,759 registros de Olist, R | [olist-r](https://github.com/rafaeladonay7-design/olist-r) |
 | Diagnóstico logístico de un marketplace | 99,441 pedidos reales de Olist (Brasil) | [olist-sql](https://github.com/rafaeladonay7-design/olist-sql) |
 | Desempeño de envíos y rentabilidad | 180,519 líneas de pedido de DataCo Global | [dataco-sql](https://github.com/rafaeladonay7-design/dataco-sql) |
 | Pronóstico de demanda y punto de reorden | DataCo Global, Python | [dataco-python](https://github.com/rafaeladonay7-design/dataco-python) |
