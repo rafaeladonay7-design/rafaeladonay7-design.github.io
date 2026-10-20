@@ -15,7 +15,7 @@ Personal portfolio of Rafael Adonay Rocha Gutiérrez, Industrial Engineering stu
 | Shipping performance and profitability | 180,519 order lines from DataCo Global | [dataco-sql](https://github.com/rafaeladonay7-design/dataco-sql) |
 | Demand forecasting and reorder points | DataCo Global, Python | [dataco-python](https://github.com/rafaeladonay7-design/dataco-python) |
 
-The site is a single `index.html` page (HTML, CSS and JavaScript, no dependencies) with an ES/EN language switch, published with GitHub Pages. The CV is `CV_Rafael_Adonay_Rocha_Datos.pdf` (data analysis).
+The site is a single `index.html` page (HTML, CSS and JavaScript, no dependencies) with an ES/EN language switch, published with GitHub Pages.
 
 ---
 
@@ -34,4 +34,4 @@ Portafolio personal de Rafael Adonay Rocha Gutiérrez, estudiante de Ingeniería
 | Desempeño de envíos y rentabilidad | 180,519 líneas de pedido de DataCo Global | [dataco-sql](https://github.com/rafaeladonay7-design/dataco-sql) |
 | Pronóstico de demanda y punto de reorden | DataCo Global, Python | [dataco-python](https://github.com/rafaeladonay7-design/dataco-python) |
 
-El sitio es una sola página `index.html` (HTML, CSS y JavaScript, sin dependencias) con botón para cambiar entre español e inglés, publicada con GitHub Pages. El CV es `CV_Rafael_Adonay_Rocha_Datos.pdf` (análisis de datos).
+El sitio es una sola página `index.html` (HTML, CSS y JavaScript, sin dependencias) con botón para cambiar entre español e inglés, publicada con GitHub Pages.
