@@ -2,7 +2,7 @@
 
 **English** · [Español](#español)
 
-Personal portfolio of Rafael Adonay Rocha Gutiérrez, Industrial Engineering student at Universidad Autónoma de Guadalajara. Data analysis, continuous improvement and supply chain: data validation and analysis with SQL, Python, R and Power BI; Lean Six Sigma Green Belt.
+Personal portfolio of Rafael Adonay Rocha Gutiérrez, Industrial Engineering student at Universidad Autónoma de Guadalajara. Information systems and management: databases, automation of administrative tasks, digital forms and reports with Excel VBA, Power Automate, SQL and Power BI.
 
 **Live site:** https://rafaeladonay7-design.github.io
 
@@ -21,7 +21,7 @@ The site is a single `index.html` page (HTML, CSS and JavaScript, no dependencie
 
 ## Español
 
-Portafolio personal de Rafael Adonay Rocha Gutiérrez, estudiante de Ingeniería Industrial en la Universidad Autónoma de Guadalajara. Análisis de datos, mejora continua y supply chain: validación y análisis de datos con SQL, Python, R y Power BI; Lean Six Sigma Green Belt.
+Portafolio personal de Rafael Adonay Rocha Gutiérrez, estudiante de Ingeniería Industrial en la Universidad Autónoma de Guadalajara. Sistemas y gestión de información: bases de datos, automatización de tareas administrativas, formularios digitales y reportes con Excel VBA, Power Automate, SQL y Power BI.
 
 **Sitio:** https://rafaeladonay7-design.github.io
 
