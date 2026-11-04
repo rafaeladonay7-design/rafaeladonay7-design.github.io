@@ -171,7 +171,7 @@ footer { padding-block: 24px 40px; font: 400 0.8125rem/1.5 var(--mono); color: v
       <li><span data-l="es">Inglés B2</span><span data-l="en">English B2</span></li>
     </ul>
     <ul class="stats">
-      <li><b>550k</b><span><span data-l="es">registros revisados con 32 reglas de calidad de datos</span><span data-l="en">records checked with 32 data quality rules</span></span></li>
+      <li><b>550k</b><span><span data-l="es">registros de 8 tablas revisados con 32 reglas de calidad de datos</span><span data-l="en">records across 8 tables checked with 32 data quality rules</span></span></li>
       <li><b>0.42%</b><span><span data-l="es">ahorro mensual de inventario al automatizar un registro con una macro de Excel/VBA (Jabil)</span><span data-l="en">monthly inventory saving by automating a record with an Excel/VBA macro (Jabil)</span></span></li>
       <li><b>784</b><span><span data-l="es">registros contables depurados: duplicados, fechas inválidas y pólizas descuadradas</span><span data-l="en">accounting records cleaned: duplicates, invalid dates and unbalanced entries</span></span></li>
     </ul>
@@ -223,8 +223,8 @@ footer { padding-block: 24px 40px; font: 400 0.8125rem/1.5 var(--mono); color: v
         <div>
           <h3><span data-l="es">Pronóstico de demanda y punto de reorden</span><span data-l="en">Demand forecasting and reorder points</span></h3>
           <p>
-            <span data-l="es">Comparé 5 métodos de pronóstico para los 7 productos que generan el 82.5% de las ventas de DataCo y calculé su stock de seguridad y punto de reorden. Lo que más mueve el inventario es el tiempo de entrega del proveedor, no el nivel de servicio.</span>
-            <span data-l="en">I compared 5 forecasting methods for the 7 products that generate 82.5% of DataCo's sales and calculated their safety stock and reorder points. Supplier lead time moves inventory more than the service level does.</span>
+            <span data-l="es">Comparé 5 métodos de pronóstico para los 7 productos que generan el 82.5% de las ventas de DataCo y calculé su stock de seguridad y punto de reorden. En el análisis de sensibilidad, pasar de 7 a 30 días de tiempo de entrega aumentó el stock de seguridad 107%, frente a 42% al subir el servicio de 95% a 99%. Los 7 días son un supuesto, porque los datos no incluyen proveedores.</span>
+            <span data-l="en">I compared 5 forecasting methods for the 7 products that generate 82.5% of DataCo's sales and calculated their safety stock and reorder points. In the sensitivity analysis, going from a 7-day to a 30-day lead time increased safety stock by 107%, versus 42% for raising service from 95% to 99%. The 7 days are an assumption, since the data has no supplier information.</span>
           </p>
           <span class="meta">Python · pandas · matplotlib · Jupyter</span>
         </div>
@@ -234,8 +234,8 @@ footer { padding-block: 24px 40px; font: 400 0.8125rem/1.5 var(--mono); color: v
         <div>
           <h3><span data-l="es">Desempeño de envíos y rentabilidad</span><span data-l="en">Shipping performance and profitability</span></h3>
           <p>
-            <span data-l="es">Analicé 180,519 líneas de pedido de DataCo, donde el 54.8% de los pedidos llega tarde. El caso más claro es la promesa de entrega: First Class promete 1 día y siempre tarda 2. Antes de analizar, creé una vista que limpia los errores en fechas. Incluye clasificación ABC de productos.</span>
-            <span data-l="en">I analyzed 180,519 DataCo order lines, where 54.8% of orders arrive late. The clearest case is the delivery promise: First Class promises 1 day and always takes 2. Before analyzing, I built a view that cleans the date errors. Includes an ABC product classification.</span>
+            <span data-l="es">Analicé 180,519 líneas de pedido de DataCo; sin contar envíos cancelados, el 54.8% de los pedidos llega tarde. En First Class, los datos muestran una brecha sistemática entre lo prometido y lo registrado: promete 1 día y siempre tarda 2. Antes de analizar, creé una vista que limpia los errores en fechas. Incluye clasificación ABC de productos.</span>
+            <span data-l="en">I analyzed 180,519 DataCo order lines; excluding canceled shipments, 54.8% of orders arrive late. In First Class, the data shows a systematic gap between what is promised and what is recorded: it promises 1 day and always takes 2. Before analyzing, I built a view that cleans the date errors. Includes an ABC product classification.</span>
           </p>
           <span class="meta">SQL · SQLite · <span data-l="es">10 consultas</span><span data-l="en">10 queries</span></span>
         </div>
@@ -256,8 +256,8 @@ footer { padding-block: 24px 40px; font: 400 0.8125rem/1.5 var(--mono); color: v
         <div>
           <h3><span data-l="es">Validación de calidad e integridad de datos</span><span data-l="en">Data quality and integrity validation</span></h3>
           <p>
-            <span data-l="es">Validé 550,759 registros de Olist con 32 reglas de calidad (faltantes, duplicados, integridad, errores en fechas y cuadre de pagos). Encontré 189 fechas fuera de orden que generan tiempos negativos y R$179,535 en ventas sin categoría que salen en blanco en un tablero.</span>
-            <span data-l="en">I validated 550,759 Olist records with 32 data quality rules (missing data, duplicates, integrity, date errors and payment reconciliation). I found 189 out-of-order dates that produce negative lead times and R$179,535 in uncategorized sales that show up blank in a dashboard.</span>
+            <span data-l="es">Validé 550,759 registros de 8 tablas de Olist con 32 reglas de calidad (faltantes, duplicados, integridad, errores en fechas y cuadre de pagos): 17 pasaron y 15 detectaron problemas. Encontré 189 fechas fuera de orden que generan tiempos negativos y R$179,535 en ventas sin categoría que salen en blanco en un tablero.</span>
+            <span data-l="en">I validated 550,759 records across 8 Olist tables with 32 data quality rules (missing data, duplicates, integrity, date errors and payment reconciliation): 17 passed and 15 found problems. I found 189 out-of-order dates that produce negative lead times and R$179,535 in uncategorized sales that show up blank in a dashboard.</span>
           </p>
           <span class="meta">R · <span data-l="es">32 reglas</span><span data-l="en">32 rules</span></span>
         </div>
