@@ -2,7 +2,7 @@
 
 **English** · [Español](#español)
 
-Personal portfolio of Rafael Adonay Rocha Gutiérrez, Industrial Engineering student at Universidad Autónoma de Guadalajara. Information systems and management: databases, automation of administrative tasks, digital forms and reports with Excel VBA, Power Automate, SQL and Power BI.
+Personal portfolio of Rafael Adonay Rocha Gutiérrez, Industrial Engineering student at Universidad Autónoma de Guadalajara. Data analysis and supply chain: demand forecasting, reorder points, shipping performance and data quality with SQL, Python, R and Excel.
 
 **Live site:** https://rafaeladonay7-design.github.io
 
@@ -15,13 +15,13 @@ Personal portfolio of Rafael Adonay Rocha Gutiérrez, Industrial Engineering stu
 | Shipping performance and profitability | 180,519 order lines from DataCo Global | [dataco-sql](https://github.com/rafaeladonay7-design/dataco-sql) |
 | Demand forecasting and reorder points | DataCo Global, Python | [dataco-python](https://github.com/rafaeladonay7-design/dataco-python) |
 
-The site is a single `index.html` page (HTML, CSS and JavaScript, no dependencies) with an ES/EN language switch, published with GitHub Pages.
+The site is a single `index.html` page (HTML, CSS and JavaScript, no frameworks or build step; it loads Google Fonts with fallback fonts) with an ES/EN language switch, published with GitHub Pages.
 
 ---
 
 ## Español
 
-Portafolio personal de Rafael Adonay Rocha Gutiérrez, estudiante de Ingeniería Industrial en la Universidad Autónoma de Guadalajara. Sistemas y gestión de información: bases de datos, automatización de tareas administrativas, formularios digitales y reportes con Excel VBA, Power Automate, SQL y Power BI.
+Portafolio personal de Rafael Adonay Rocha Gutiérrez, estudiante de Ingeniería Industrial en la Universidad Autónoma de Guadalajara. Análisis de datos y supply chain: pronóstico de demanda, punto de reorden, desempeño de envíos y calidad de datos con SQL, Python, R y Excel.
 
 **Sitio:** https://rafaeladonay7-design.github.io
 
@@ -34,4 +34,4 @@ Portafolio personal de Rafael Adonay Rocha Gutiérrez, estudiante de Ingeniería
 | Desempeño de envíos y rentabilidad | 180,519 líneas de pedido de DataCo Global | [dataco-sql](https://github.com/rafaeladonay7-design/dataco-sql) |
 | Pronóstico de demanda y punto de reorden | DataCo Global, Python | [dataco-python](https://github.com/rafaeladonay7-design/dataco-python) |
 
-El sitio es una sola página `index.html` (HTML, CSS y JavaScript, sin dependencias) con botón para cambiar entre español e inglés, publicada con GitHub Pages.
+El sitio es una sola página `index.html` (HTML, CSS y JavaScript, sin frameworks ni compilación; carga Google Fonts con fuentes de respaldo) con botón para cambiar entre español e inglés, publicada con GitHub Pages.
